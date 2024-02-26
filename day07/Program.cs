@@ -30,22 +30,24 @@ internal partial class Program
         Node current = root;
         SortedList<int, bool> sizesForPart2 = new();
 
-        var WalkUp = (Node current) =>
+        Node WalkUp(Node current)
         {
             if (current.Parent == null)
             {
                 throw new ApplicationException("Parent is null");
             }
+
             var size = current.TotalSize;
             sizesForPart2.TryAdd(size, true);
             if (size <= 100000)
             {
                 part1Result += size;
             }
+
             current = current.Parent;
             current.TotalSize += size;
             return current;
-        };
+        }
 
         foreach (var line in File.ReadAllLines("input.txt"))
         {
