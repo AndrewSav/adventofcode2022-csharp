@@ -66,11 +66,11 @@ internal partial class Program
     {
         string[] lines = File.ReadAllLines("input.txt");
         Rope r = new(length);
-        HashSet<Point> hs = new();
+        HashSet<Point> hs = [];
         foreach (string line in lines)
         {
             char direction = line[0];
-            int distance = int.Parse(line.Substring(2));
+            int distance = int.Parse(line[2..]);
             for (int i = 0; i < distance; i++)
             {
                 switch (direction)
